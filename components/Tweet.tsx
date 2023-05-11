@@ -3,13 +3,11 @@ import React from 'react'
 
 import { EllipsisVerticalIcon } from 'react-native-heroicons/solid'
 import { ChatBubbleOvalLeftIcon, HeartIcon, ShareIcon } from 'react-native-heroicons/outline'
-import { EvilIcons, Feather } from '@expo/vector-icons'
-import tweets from '../assets/data/tweets'
+import { EvilIcons } from '@expo/vector-icons'
+import { Tweetprops } from '../types'
+import moment from 'moment'
 
-const tweet = tweets[0];
-
-
-const Tweet = ({tweet}) => {
+const Tweet = ({tweet}: Tweetprops) => {
   return (
     <View className='bg-white w-screen flex-1  flex-row items-start px-4 py-4 border-0 border-b-[0.2px] border-b-gray-300'>
       <Image src={tweet.user.image} className='w-[50px] h-[50px] rounded-[50px]' />
@@ -18,6 +16,8 @@ const Tweet = ({tweet}) => {
           <View className='flex-row'>
             <Text className='text-sm font-bold'>{tweet.user.name}</Text>
             <Text className='text-sm font-normal text-gray-500'> @{tweet.user.username}</Text>
+            {/* <Text className='text-sm font-normal text-gray-500'> . {'5h'}</Text> */}
+            <Text className='text-sm font-normal text-gray-500'> . {moment(tweet.createdAt).from(moment(new Date()))}</Text>
           </View>
           <View>
               <EllipsisVerticalIcon  size={20} color={'grey'}  />

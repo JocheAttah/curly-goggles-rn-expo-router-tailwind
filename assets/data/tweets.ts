@@ -8,7 +8,7 @@ const tweets = [
       image:
         'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.png',
     },
-    createdAt: '2020-08-27T12:00:00.000Z',
+    createdAt: "2023-05-11T03:18:52.136Z",
     content: 'Can you please check if the Subscribe button on Youtube works?',
     image:
       'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/thumbnail.png',
@@ -18,7 +18,7 @@ const tweets = [
   },
   {
     id: '111111111',
-    createdAt: '2023-04-28T08:30:00.000Z',
+    createdAt: "2023-05-11T03:19:34.524Z",
     user: {
       id: '123456789',
       name: 'Jeff B',
@@ -35,7 +35,7 @@ const tweets = [
   },
   {
     id: '222222222',
-    createdAt: '2023-04-27T19:45:00.000Z',
+    createdAt: "2023-05-11T03:19:59.589Z"     ,
     user: {
       id: '987654321',
       name: 'Zuck',
