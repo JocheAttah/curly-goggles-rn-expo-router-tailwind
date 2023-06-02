@@ -14,8 +14,7 @@ export type TweetType = {
     numberOfComments: number;
     numberOfRetweets: number;
     numberOfLikes: number;
+    impressions: number,
+
   };
 
-export type Tweetprops ={
-    tweet:TweetType;
-}

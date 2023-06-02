@@ -2,10 +2,15 @@ import { View, Text, Image } from 'react-native'
 import React from 'react'
 
 import { EllipsisVerticalIcon } from 'react-native-heroicons/solid'
-import { ChatBubbleOvalLeftIcon, HeartIcon, ShareIcon } from 'react-native-heroicons/outline'
-import { EvilIcons } from '@expo/vector-icons'
-import { Tweetprops } from '../types'
+import { Feather, Ionicons, Octicons } from '@expo/vector-icons'
 import moment from 'moment'
+import { TweetType } from '../types'
+import IconButton from './Iconbutton'
+
+export type Tweetprops ={
+  tweet:TweetType;
+}
+
 
 const Tweet = ({tweet}: Tweetprops) => {
   return (
@@ -16,32 +21,22 @@ const Tweet = ({tweet}: Tweetprops) => {
           <View className='flex-row'>
             <Text className='text-sm font-bold'>{tweet.user.name}</Text>
             <Text className='text-sm font-normal text-gray-500'> @{tweet.user.username}</Text>
-            {/* <Text className='text-sm font-normal text-gray-500'> . {'5h'}</Text> */}
-            <Text className='text-sm font-normal text-gray-500'> . {moment(tweet.createdAt).from(moment(new Date()))}</Text>
+            <Text className='text-sm font-normal text-gray-500'> · {moment(tweet.createdAt).from(moment(new Date()))}</Text>
           </View>
           <View>
-              <EllipsisVerticalIcon  size={20} color={'grey'}  />
+              <EllipsisVerticalIcon  size={16 } color={'grey'}  />
           </View>
         </View>
         <View className='w-full'>
           <Text>{tweet.content}</Text>
         </View>
+        {tweet.image && <Image src={tweet.image} className='w-full my-2.5 aspect-video rounded-xl' /> }
         <View className='flex-row justify-between items-center pr-4 mt-2'>
-          <View className='flex-row items-center'>
-           <ChatBubbleOvalLeftIcon size={20} color={'grey'}/>
-            <Text className='ml-[2px] text-gray-600'>{tweet.numberOfComments}</Text>
-          </View>
-          <View className='flex-row items-center'>
-           <EvilIcons name='retweet' size={30} color={'grey'}/>
-            <Text className='ml-[2px] text-gray-600'>{tweet.numberOfRetweets}</Text>
-          </View>
-          <View className='flex-row items-center'>
-           <HeartIcon size={20} color={'grey'}/>
-            <Text className='ml-[2px] text-gray-600'>{tweet.numberOfLikes}</Text>
-          </View>
-          <View>
-           <ShareIcon size={20} color={'grey'}/>
-          </View>
+          <IconButton IconFamily={Ionicons} name={'md-chatbubble-outline'} text={tweet.numberOfComments} />
+          <IconButton IconFamily={Feather} name={'repeat'} text={tweet.numberOfRetweets} />
+          <IconButton IconFamily={Feather} name={'heart'} text={tweet.numberOfLikes} />
+          <IconButton IconFamily={Ionicons} name={'md-stats-chart'} text={tweet.impressions} />
+          <IconButton IconFamily={Octicons} name={'share-android'} />
         </View>
       </View>
     </View>
